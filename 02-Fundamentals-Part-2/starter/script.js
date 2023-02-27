@@ -71,18 +71,69 @@ function percentageOfWorld1(population) {
 // console.log(neighbors);
 
 // CODING CHALLENGE #2
-const calcTip = bill => {
-    if (bill >= 50 && bill <= 300) {
-        return bill * 0.15;
-    }
-    else {
-        return bill * 0.20;
-    };
-};
-console.log(calcTip(100));
+// const calcTip = bill => {
+//     if (bill >= 50 && bill <= 300) {
+//         return bill * 0.15;
+//     }
+//     else {
+//         return bill * 0.20;
+//     };
+// };
+// console.log(calcTip(100));
 
-const bills = [125, 555, 44];
-const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])]
-const total = [(bills[0] + tips[0]), (bills[1] + tips[1]), (bills[2] + tips[2])]
-console.log(tips);
-console.log(total);
+// const bills = [125, 555, 44];
+// const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])]
+// const total = [(bills[0] + tips[0]), (bills[1] + tips[1]), (bills[2] + tips[2])]
+// console.log(tips);
+// console.log(total);
+
+// LECTURE: Intro to Objects
+// const myCountry = {
+//     country: 'United States of America',
+//     capital: 'Washington D.C.',
+//     language: 'English',
+//     population: 332000000,
+//     neighbors: ['Mexico', 'Canada'],
+//     describe: function() 
+//         {console.log(`${this.country} has ${this.population} ${this.language}-speaking people, ${this.neighbors.length} neighboring countries and a capital called ${this.capital}.`)},
+//     checkIsland: function() {
+//         this.isIsland = this.neighbors.length === 0 ? true : false;
+//     }
+// };
+// console.log(`${myCountry.country} has ${myCountry.population} ${myCountry.language}-speaking people, ${myCountry.neighbors.length} neighboring countries and a capital called ${myCountry.capital}.`);
+
+// console.log(myCountry.population + 2000000);
+// console.log(myCountry['population'] - 2000000);
+// myCountry.describe();
+// myCountry.checkIsland();
+// console.log(myCountry);
+
+// CODING CHALLENGE #3
+// const player1 = {
+//     fullName: 'Mark Miller',
+//     mass: 78,
+//     height: 1.69,
+//     calcBMI: function() {
+//         this.BMI = this.mass / (this.height ** 2);
+//         return this.BMI;
+//     },
+//     };
+// const player2 = {
+//     fullName: 'John Smith',
+//     mass: 92,
+//     height: 1.95,
+//     calcBMI: function() {
+//         this.BMI = this.mass / (this.height ** 2);
+//         return this.BMI;
+// },
+// };
+// player1.calcBMI();
+// player2.calcBMI();
+// console.log(player1.BMI);
+// if (player1.BMI > player2.BMI) {
+//     console.log(`${player1.fullName} has a higher BMI (${player1.BMI}) than ${player2.fullName} (${player2.BMI})`);
+// }
+// else {
+//     console.log(`${player2.fullName} has a higher BMI (${player2.BMI}) than ${player1.fullName} (${player1.BMI})`);         
+// };
+
