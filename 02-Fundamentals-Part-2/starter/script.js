@@ -5,9 +5,9 @@
 // console.log(describeCountry('United States', '300 billion people', 'Washington DC'));
 
 // LECTURE: Function Declarations vs. Expressions
-function percentageOfWorld1(population) {
-    return population / 7900 * 100;
-};
+// function percentageOfWorld1(population) {
+//     return population / 7900 * 100;
+// };
 // let unitedStatesPop = percentageOfWorld1(300000000);
 // console.log(unitedStatesPop);
 
@@ -137,3 +137,24 @@ function percentageOfWorld1(population) {
 //     console.log(`${player2.fullName} has a higher BMI (${player2.BMI}) than ${player1.fullName} (${player1.BMI})`);         
 // };
 
+
+// LECTURE: Iteration: the for loop
+// for (let voter = 1; voter <= 50; voter++) {
+//     console.log(`Voter number ${voter} is currently voting!`);
+// };
+
+// LECTURE: Looping Arrays, Breaking and Continuing
+// function percentageOfWorld1(population) {
+//     return population / 7900 * 100;
+// };
+
+// const populations = [70000000, 222000000, 22800000, 4550000];
+// console.log(populations.length === 4);
+// const percentages = [percentageOfWorld1(populations[0]), percentageOfWorld1(populations[1]), percentageOfWorld1(populations[2]), percentageOfWorld1(populations[3])];
+// console.log(percentages);
+// const percentages2 = [];
+
+// for (let i = 0; i < populations.length; i++) {
+//     percentages2.push(percentageOfWorld1(populations[i]));
+// };
+// console.log(percentages2);
