@@ -158,3 +158,11 @@
 //     percentages2.push(percentageOfWorld1(populations[i]));
 // };
 // console.log(percentages2);
+
+// LECTURE: Looping Backwards and Loops in Loops
+const listOfNeighbors = [['Canada', 'Mexico'], ['Spain'], ['Norway', 'Sweden', 'Russia']];
+for (let countries = 0; countries < listOfNeighbors.length; countries++) {
+    for (let i = 0; i < listOfNeighbors[i].length; i++) {
+        console.log(`Neighbor: ${listOfNeighbors[countries][i]}`);
+};
+}
