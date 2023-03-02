@@ -168,12 +168,35 @@
 // };
 
 // LECTURE: the while loop
-const percentages3 = [];
-function percentageOfWorld1(population) {
-        return population / 7900 * 100;
+// const percentages3 = [];
+// function percentageOfWorld1(population) {
+//         return population / 7900 * 100;
+//     };
+// const populations = [70000000, 222000000, 22800000, 4550000];
+// let i = 0;
+// while (i < populations.length) {
+//     percentages3.push(percentageOfWorld1(populations[i]));
+// };
+
+
+// CODING CHALLENGE #4
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+const calcTip = bill => {
+    if (bill >= 50 && bill <= 300) {
+        return bill * 0.15;
+    }
+    else {
+        return bill * 0.20;
     };
-const populations = [70000000, 222000000, 22800000, 4550000];
-let i = 0;
-while (i < populations.length) {
-    percentages3.push(percentageOfWorld1(populations[i]));
-}
+};
+
+for (let i = 0; i < bills.length; i++) {
+    tips.push(calcTip(bills[i]));
+
+    totals.push((bills[i] + tips[i]));
+};
+console.log(tips);
+console.log(totals);
