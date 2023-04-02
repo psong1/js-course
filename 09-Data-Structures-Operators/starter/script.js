@@ -46,6 +46,39 @@ const restaurant = {
   },
 };
 
+
+console.log('--- OR ---');
+// Usy ANY data type, return ANY data type, short circuiting
+// returns the first truthy value or last value if all are falsy
+console.log(3 || 'Paul');
+console.log('' || 'Paul');
+console.log(true || 0);
+console.log(undefined || null);
+
+// logs Hello bc it is the first truthy value
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+// returns the first falsy value or last if all are falsy
+console.log('---AND---');
+console.log(0 && 'Paul');
+console.log(7 && 'Paul');
+console.log( 'Hello' && 23 && null && 'Paul');
+
+// Practical Example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('pepperoni', 'beef'); 
+}
+restaurant.orderPizza && restaurant.orderPizza('pepperoni', 'beef');
+
+
+
 // SPREAD because on RIGHT side of =
 // used to write values separated by commas
 // const arr = [1, 2, ...[3, 4]];
@@ -197,3 +230,4 @@ const restaurant = {
 // Default values
 // const [p = 1, q = 1, r = 1] = [8, 9];
 // console.log(p, q, r);
+
