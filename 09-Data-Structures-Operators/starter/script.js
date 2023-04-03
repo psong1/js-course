@@ -50,28 +50,103 @@ const restaurant = {
     openingHours,
   };
 
-// Property NAMES
-const properties = Object.keys(openingHours);
-console.log(properties);
-let openStr = `We are open on ${properties.length} days: `;
+ const rest = new Map();
+ rest.set('name', 'Classico Italiano');
+ rest.set(1, 'Firenze, Italy');
+ console.log(rest.set(2, 'Lisbon'));
 
-for (const day of Object.keys(openingHours)) {
-  openStr+= `${day}, `;
-}
-console.log(openStr);
+ rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+ .set('open', 11)
+ .set('close', 23)
+ .set(true, 'We are open')
+ .set(false, 'We are closed')
+
+ console.log(rest.get('name'));
+ console.log(rest.get(true));
+ console.log(rest.get(1));
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('categories'));
+rest.delete(2);
+// rest.clear();
+const arr = [1, 2];
+rest.set(arr, 'Test')
+rest.set(document.querySelector('h1'), 'Heading');
+
+console.log(rest);
+console.log(rest.size);
+
+// return undefined bc array is not the same object in the heap
+// console.log(rest.get([1, 2]));
+console.log(rest.get(arr));
+
+  // const ordersSet = new Set ([
+  //   'Pasta',
+  //   'Pizza',
+  //   'Pizza',
+  //   'Risotto',
+  //   'Pasta',
+  //   'Pizza',
+  // ]);
+  // duplicates are shown in the set, so it will show a set of three in this case (unique elements)
+  // console.log(ordersSet);
+
+  // console.log(new Set('Paul'));
+
+  // to get the size of the set
+  // console.log(ordersSet.size);
+
+  // check of set contains item; BOOLEAN
+  // console.log(ordersSet.has('Bread'));
+
+  // add new element to set
+  // ordersSet.add('Garlic Bread');
+  // ordersSet.add('Garlic Bread');
+
+  // delete all elements
+  // ordersSet.clear();
+
+  // delete elements
+  // ordersSet.delete('Risotto');
+  // console.log(ordersSet);
+
+  // for (const order of ordersSet)
+  // console.log(order);
+
+// Main use case of sets is to remove duplicate values of arrays
+// Example
+  // const staff = ['Waiter', 'Chef', 'Manager', 'Waiter', 'Chef', 'Waiter'];
+  // use spread operator on any iterable to create array from set
+  // const staffUnique = [...new Set(staff)];
+  // console.log(staffUnique);
+  // console.log(new Set(['Waiter', 'Chef', 'Manager', 'Waiter', 'Chef', 'Waiter']).size);
+
+  // console.log(new Set('paulsong').size);
+
+// Property NAMES
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+// let openStr = `We are open on ${properties.length} days: `;
+
+// for (const day of Object.keys(openingHours)) {
+//   openStr+= `${day}, `;
+// }
+// console.log(openStr);
 
 // Property VALUES
-const values = Object.values(openingHours);
-console.log(values);
+// const values = Object.values(openingHours);
+// console.log(values);
 
 // Entire Object
-const entries = Object.entries(openingHours);
+// const entries = Object.entries(openingHours);
 // console.log(entries);
 
 // [key, value]
-for (const [day, { open, close }] of entries) {
-  console.log(`On ${day} we open at ${open} and close at ${close}`);
-}
+// for (const [day, { open, close }] of entries) {
+//   console.log(`On ${day} we open at ${open} and close at ${close}`);
+// }
 
 // Optional Chaining
   // if (restaurant.openingHours && restaurant.openingHours.mon) 

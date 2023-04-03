@@ -61,3 +61,40 @@ printGoals('Davies', 'Muller', 'Mane', 'Kimmich');
 printGoals(...game.scored);
 
 team1 < team2 && console.log('Team 1 is more likely to win');
+
+// Number 1
+const goals = Object.keys(game.scored);
+let goalsStr = `Goal ${goals}: `;
+console.log(goals);
+
+for (scorer of Object.keys(game.scored)) {
+    goalsStr += `${goals}:` 
+};
+console.log(goalsStr);
+
+const entries = Object.entries(game.scored);
+console.log(entries);
+
+for (const [goals, scorer] of game.scored.entries()) {
+    console.log(`Goal ${goals + 1}: ${scorer}`);
+}
+
+// Number 2
+const odds = Object.values(game.odds);
+let avg = 0;
+for (const odd of odds) {
+    avg += odd;
+    avg /= odds.length;
+};
+console.log(avg);
+
+// Number 3
+const bayernM = game.team1;
+const dortmund = game.team2;
+console.log(bayernM);
+console.log(dortmund);
+
+for (const [team, odd] of Object.entries(game.odds)) {
+    const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}:`
+    console.log(`Odd of ${teamStr}: ${odd}`);
+}
