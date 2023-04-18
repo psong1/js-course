@@ -122,7 +122,7 @@ console.log(events);
 console.log(gameEvents.delete(64));
 const eventsArr = [...gameEvents];
 
-const avgArr = 90 / eventsArr.length;
+const avgArr = 90 / gameEvents.size;
 console.log(avgArr);
 
 console.log(`"An event happened, on
