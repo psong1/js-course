@@ -82,42 +82,65 @@
 // class declaration
 const curYear = new Date().getFullYear();
 
-// class PersonCl {
-//     constructor(fullName, birthYear) {
-//         this.fullName = fullName;
-//         this.birthYear = birthYear;
-//     }
+class PersonCl {
+    constructor(fullName, birthYear) {
+        this.fullName = fullName;
+        this.birthYear = birthYear;
+    }
 
-//     // Instance methods
-//     // Methods will be added to the .prototype property
-//     calcAge() {
-//         console.log(curYear - this.birthYear);
-//     }
+    // Instance methods
+    // Methods will be added to the .prototype property
+    calcAge() {
+        console.log(curYear - this.birthYear);
+    }
 
-//     greet() {
-//         console.log(`Hey ${this.fullName}`);
-//     }
+    greet() {
+        console.log(`Hey ${this.fullName}`);
+    }
 
-//     get age() {
-//         return curYear - this.birthYear;
-//     }
+    get age() {
+        return curYear - this.birthYear;
+    }
 
-//     // Set a property that already exists (from the constructor)
-//     set fullName(name) {
-//         if (name.includes(' ')) this._fullName = name;
-//         else alert(`${name} is not a full name.`);
-//     }
+    // Set a property that already exists (from the constructor)
+    set fullName(name) {
+        if (name.includes(' ')) this._fullName = name;
+        else alert(`${name} is not a full name.`);
+    }
 
-//     get fullName() {
-//         return this._fullName;
-//     }
+    get fullName() {
+        return this._fullName;
+    }
 
-//     // Static method
-//     static hey() {
-//         console.log('Hey there!');
-//         console.log(this);
-//     }
-// };
+    // Static method
+    static hey() {
+        console.log('Hey there!');
+        console.log(this);
+    }
+};
+
+// INHERITANCE: ES6 CLASSES
+class StudentCl extends PersonCl {
+    constructor(fullName, birthYear, course) {
+        // Always needs to happen first
+        super(fullName, birthYear);
+        this.course = course;
+    }
+
+    introduce() {
+        console.log(`My name is ${this.fullName} and I am studying ${this.course}.`)
+    };
+
+    calcAge() {
+        console.log(`I'm ${curYear - this.birthYear} years old, but I feel more like ${curYear - this.birthYear + 10}`);
+    }
+};
+
+
+
+const martha = new StudentCl('Martha Jones', 2002, 'Computer Science');
+martha.introduce();
+martha.calcAge();
 
 // const paul = new PersonCl('Paul Song', 1995);
 // console.log(paul);
@@ -184,36 +207,150 @@ const curYear = new Date().getFullYear();
 
 
 // INHERITANCE
-const Person = function(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-};
+// const Person = function(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+// };
 
-Person.prototype.calcAge = function () {
-    console.log(curYear - this.birthYear);
-};
+// Person.prototype.calcAge = function () {
+//     console.log(curYear - this.birthYear);
+// };
 
-const Student = function(firstName, birthYear, course) {
-    Person.call(this, firstName, birthYear);
-    this.course = course;
-};
+// const Student = function(firstName, birthYear, course) {
+//     Person.call(this, firstName, birthYear);
+//     this.course = course;
+// };
 
-// Linking prototypes
-Student.prototype = Object.create(Person.prototype);
+// // Linking prototypes
+// Student.prototype = Object.create(Person.prototype);
 
-Student.prototype.introduce = function() {
-    console.log(`My name is ${this.firstName} and I am studying ${this.course}.`)
+// Student.prototype.introduce = function() {
+//     console.log(`My name is ${this.firstName} and I am studying ${this.course}.`)
+// }
+
+// const mike = new Student('Mike', 2000, 'Computer Science');
+// mike.introduce();
+// mike.calcAge();
+
+// console.log(mike.__proto__);
+// console.log(mike.__proto__.__proto__);
+
+// console.log(mike instanceof Student);
+// console.log(mike instanceof Person);
+
+// Student.prototype.constructor = Student;
+// console.dir(Student.prototype.constructor);
+
+
+// INHERITANCE BETWWEN CLASSES: "OBJECT.CREATE"
+// const PersonProto = {
+//         calcAge() {
+//             console.log(curYear - this.birthYear);
+//         },
+    
+//         init(firstName, birthYear) {
+//             this.firstName = firstName;
+//             this.birthYear = birthYear;
+//         }
+//     };
+
+// const steven = Object.create(PersonProto);
+
+// const StudentProto = Object.create(PersonProto); // PersonProto is the prototype of StudentProto
+// StudentProto.init = function(firstName, birthYear, course) {
+//     PersonProto.init.call(this, firstName, birthYear);
+//     this.course = course;
+// };
+
+// StudentProto.introduce = function() {
+//     console.log(`My name is ${this.fullName} and I am studying ${this.course}.`)
+// };
+
+
+// const jay = Object.create(StudentProto); // StudentProto is the prototype of jay
+// jay.init('Jay', 2005, 'Computer Science');
+// jay.calcAge();
+
+
+// ANOTHER CLASS EXAMPLE
+// 1. Public fields
+// 2. Private fields
+// 3. Public methods
+// 4. Private methods
+// there is also a static method
+
+class Account {
+     // 1. public fields (instances)
+     locale = navigator.language;
+
+     // 2. private fields
+     #movements = [];
+     #pin;
+
+    constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        this.#pin = pin;
+        // Protect property (can still be accessed outside of class)
+        // this._movements = [];
+        // this.locale = navigator.language;
+
+        console.log(`Thanks for opening an account, ${this.owner}`);
+    }
+
+    // 3. public methods
+    // Public interface of object
+    getMovements() {
+        return this.#movements;
+    }
+
+    deposit(val) {
+        this.#movements.push(val);
+        return this;
+    }
+
+    withdraw(val) {
+        this.deposit(-val);
+        return this;
+    }
+
+    requestLoan(val) {
+        if (this._approveLoan(val)) {
+            this.deposit(val);
+            console.log(`Loan approved for ${val}$`);
+            return this;
+        }
+    }
+
+    static helper() {
+        console.log();
+    }
+
+    // 4. private methods (not yet supported)
+    // #approveLoan(val) { 
+        _approveLoan(val) {
+        return true;
+    }
 }
 
-const mike = new Student('Mike', 2000, 'Computer Science');
-mike.introduce();
-mike.calcAge();
+const acc1 = new Account('Paul', 'USD', 1111);
 
-console.log(mike.__proto__);
-console.log(mike.__proto__.__proto__);
+// Don't do this
+// acc1.movements.push(250);
+// acc1.movements.push(-140);
 
-console.log(mike instanceof Student);
-console.log(mike instanceof Person);
+acc1.deposit(250);
+acc1.withdraw(150);
+acc1.requestLoan(1000);
+// acc1.#approveLoan(1000);
+console.log(acc1.getMovements());
 
-Student.prototype.constructor = Student;
-console.dir(Student.prototype.constructor);
+console.log(acc1);
+// console.log(acc1.#pin);
+
+Account.helper();
+
+
+// CHAINING METHODS
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovements());
