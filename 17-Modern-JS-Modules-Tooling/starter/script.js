@@ -5,18 +5,18 @@
 
 // import { addToCart } from './shoppingCart';
 
-// console.log('Importing module');
+console.log('Importing module');
 
 // // import * as ShoppingCart from './shoppingCart.js';
 // // ShoppingCart.addToCart('bread', 5);
 // // console.log(ShoppingCart.totalPrice);
 
-// import add, { cart } from './shoppingCart.js';
-// add('pizzas', 2);
-// add('bread', 5);
-// add('apples', 4);
+import add, { cart } from './shoppingCart.js';
+add('pizzas', 2);
+add('bread', 5);
+add('apples', 4);
 
-// console.log(cart);
+console.log(cart);
 
 // // console.log('Start fetching');
 // // const res = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -77,7 +77,9 @@
 // const {addToCart} = require('./shoppingCart.js')
 
 // INTRO TO NPM
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
+// import cloneDeep from 'lodash';
 
 const state = {
   cart: [
@@ -99,3 +101,8 @@ state.user.loggedIn = false;
 console.log(stateClone);
 
 console.log(stateDeepClone);
+
+// When a module is changed, a rebuild is triggered and new modified bundle will be injected into browser w/o reloading whole page
+if (module.hot) {
+  module.hot.accept();
+}
