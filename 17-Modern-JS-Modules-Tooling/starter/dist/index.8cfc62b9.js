@@ -646,8 +646,20 @@ console.log(stateClone);
 console.log(stateDeepClone);
 // When a module is changed, a rebuild is triggered and new modified bundle will be injected into browser w/o reloading whole page
 if (module.hot) module.hot.accept();
+// CONFIGURING BABEL AND POLYFILING
+class Person {
+    #greeting = "Hey";
+    constructor(name){
+        this.name = name;
+        console.log(`${this.#greeting}, ${this.name}`);
+    }
+}
+const paul = new Person("Paul");
+console.log("Paul" ?? null);
+console.log((0, _shoppingCartJs.cart).find((el)=>el.quantity >= 2));
+Promise.resolve("TEST").then((x)=>console.log(x));
 
-},{"./shoppingCart.js":"l6bJl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","lodash-es":"bXNwz"}],"l6bJl":[function(require,module,exports) {
+},{"./shoppingCart.js":"l6bJl","lodash-es":"bXNwz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l6bJl":[function(require,module,exports) {
 // exporting module
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
